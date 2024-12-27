@@ -115,10 +115,6 @@
   <h2>Create New Entry</h2>
   <form method="POST">
     <div class="form-group">
-      <label for="id">ID:</label>
-      <input type="number" id="id" name="id" required>
-    </div>
-    <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
     </div>

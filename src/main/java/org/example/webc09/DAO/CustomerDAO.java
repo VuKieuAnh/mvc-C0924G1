@@ -13,7 +13,7 @@ public class CustomerDAO implements ICustomerDAO {
     public static final String USER = "root";
     public static final String PASSWORD = "123456@Abc";
     public static final String SELECT_FROM_CUSTOMER = "select * from customer;";
-
+    private static final String CREATE_CUSTOMER = "insert into customer(name, email, phone) values (?, ?, ?);";
     //    Connection
     private Connection getConnection() {
         try {
@@ -59,6 +59,20 @@ public class CustomerDAO implements ICustomerDAO {
 
     @Override
     public void save(Customer customer) {
-
+        Connection connection = getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_CUSTOMER);
+//            <index cua ?>: thu tu cua tham so trong sql statement bat dau tu 1
+            preparedStatement.setString(1, customer.getName());
+            preparedStatement.setString(2, customer.getEmail());
+            preparedStatement.setString(3, customer.getPhone());
+            System.out.println(preparedStatement);
+            int a = preparedStatement.executeUpdate();
+//            xoa ban ghi: excuteUpdate
+//            lay so ban ghi bi xoa
+//            tim kiem: -> lay so luong ban ghi tim kiem dc
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

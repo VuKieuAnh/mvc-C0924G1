@@ -52,11 +52,11 @@ public class CustomerController extends HttpServlet {
     }
 
     private void createCustomer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        int customerId = Integer.parseInt(req.getParameter("id"));
+//        int customerId = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
-        Customer customer = new Customer(customerId, name, email, phone);
+        Customer customer = new Customer(name, email, phone);
         customerService.save(customer);
         resp.sendRedirect(req.getContextPath() + "/customers");
     }
